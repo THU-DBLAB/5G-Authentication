@@ -40,7 +40,7 @@ $ shutdown -f now
 
 ```bash
 $ cd ~/mininet/custom
-$ sudo git clone https://github.com/THU-DBLAB/5G-Authentication.git
+$ git clone https://github.com/THU-DBLAB/5G-Authentication.git
 ```
 
 ---

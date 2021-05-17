@@ -38,6 +38,23 @@ $ shutdown -f now
 
 ### Socket with python
 
+##### 開第一個 Terminal 使用 Ryu 控制
+
+```bash
+$ ryu-manager ryu.app.simple_switch_13
+```
+
+##### 開第二個 Terminal 使用 Mininet 拓樸
+
+```bash
+$ cd ~/mininet/custom/5gAuth
+$ sudo mn --custom 5gtopo.py --topo mytopo --controller=remote,ip=127.0.0.1,port=6633 --switch ovs,protocols=OpenFlow13
+
+# mininet > 
+$ pingall
+$ xterm UE RAN
+```
+
 ##### 在 ~/mininet/custom/5gAuth 寫入 Client.py
 
 ```bash
@@ -69,6 +86,18 @@ while True:
         data = c.recv(1024)
         print(“Client recv data: %s" % (data))
         client.send(“ACK!")
+```
+
+##### in xterm (RAN) > 
+
+```bash
+$ sudo python3 Server.py
+```
+
+##### in xterm (UE) > 
+
+```bash
+$ sudo python3 Client.py
 ```
 
 ---

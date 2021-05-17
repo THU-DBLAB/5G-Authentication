@@ -1,6 +1,5 @@
 # 5G-Authentication
 ---
-<p>
 在 Virtual Box 上建立 Linux 虛擬環境，
 ubuntu-18.04.5-desktop-amd64.iso / ubuntu-20.04.2.0-desktop-amd64.iso
 使用 Mininet 拓樸，使用 Ryu 控制傳輸，模擬 5G 認證過程。
@@ -18,5 +17,19 @@ App:  Virtual Box 6.1.16 r140961
 Virtual Box:
 RAM:  16384 MB
 虛擬硬碟大小:  60.0 GB
-</p>
 ---
+### Ubuntu COPY & PASTE in virtualbox
+
+```bash
+# 安裝元件
+$ sudo apt install dkms build-essential linux-headers-generic
+
+# VirtualBox Menu > Devices > Insert Guest Additions CD images …
+
+# 關機
+$ shutdown -f now
+
+# VirtualBox > 設定 > 一般 > 進階 > 共用剪貼簿 > 雙向
+
+# Success!
+```

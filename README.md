@@ -38,8 +38,9 @@ $ shutdown -f now
 
 ### Socket with python
 
+##### 在 ~/mininet/custom/5gAuth 寫入 Client.py
+
 ```bash
-# 在 ~/mininet/custom/5gAuth 寫入 Client.py
 import socket
 host = “10.1.0.2"
 port = 1
@@ -51,3 +52,24 @@ while True:
     data = s.recv(1024)
     print(“server send: %s" % (data))
 ```
+
+##### 在 ~/mininet/custom/5gAuth 寫入 Server.py
+
+```bash
+import socket
+bind_ip = "10.1.0.2"
+bind_port = 1
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.bind((bind_ip, bind_port))
+s.listen(5)
+while True:
+    c, addr = s.accept()
+    print(“Connected by: ”, addr)
+    while True:
+        data = c.recv(1024)
+        print(“Client recv data: %s" % (data))
+        client.send(“ACK!")
+```
+
+---
+

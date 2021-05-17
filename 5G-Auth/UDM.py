@@ -10,7 +10,7 @@ RAND、XRES*、KAUSF、AUTNUDM(包含SQN⊕AK, AMF, MAC)
 """
 import socket
 f = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-f.bind(("10.1.0.4",1))
+f.bind(("10.1.0.5",1))
 f.listen(5)
 c,addr = f.accept()
 data6 = c.recv(1024) #SUPI[0:14], sn-name[14:19]
@@ -21,12 +21,13 @@ print(Back.RED+"STEP 06")
 print(Fore.RED+"------------------------------------------------------------")
 print(Fore.RED+"|                          v      v     v")
 print(Fore.RED+"|>UE---RAN---AMF---SEAF---AUSF---UDM---ARPF")
-print(Fore.RED+"|>"+Fore.GREEN+"[SUPI]%s" %(SUPI))
-print(Fore.RED+"|>"+Fore.GREEN+"[sn-name]%s" %(sn))
 print(Fore.RED+"------------------------------------------------------------")
+print(Fore.RED+"  Get\n"+Fore.GREEN+"  [SUPI]%s" %(SUPI))
+print(Fore.GREEN+"  [sn-name]%s" %(sn))
 if sn == "10011":
     print(Fore.RED+"  RAN's sn-name is allowed!")
     print(Fore.RED+"  Because SUPI, so use 5G-AKA to authenticate")
+    print(Fore.RED+"  Because SUPI, no need to pass to SIDF")
 else:
     print(Fore.RED+"--NOT ALLOW!--")
     exit()
@@ -43,7 +44,6 @@ print(Fore.YELLOW+"|              |                                           |"
 print(Fore.YELLOW+"|              v                                           |")
 print(Fore.YELLOW+"|           SQN⊕AK                                         |")
 print(Fore.RED+"------------------------------------------------------------")
-#Because transfer of data = SUPI, no need to pass to SIDF
 #Check [SUPI]46697123456789 in ARPF, which Key = 1000000000000001
 #Key, a 128-bit subscriber key that is an input to the functions f1, f1*, f2, f3, f4, f5 and f5*.
 Key = "1000000000000001"
@@ -85,7 +85,7 @@ AV = "%s%s%s%s" %(RAND1, XRES, K_ausf, AUTN)
 print(Fore.RED+"|>RAND1")
 print(Fore.RED+"|>"+Fore.GREEN+"[f1][MAC-A]%s" %(MAC_A))
 print(Fore.RED+"|>"+Fore.GREEN+"[f2][XRES]%s" %(XRES))
-print(Fore.RED+"|>"+Fore.GREEN+"f3][CK]%s" %(CK))
+print(Fore.RED+"|>"+Fore.GREEN+"[f3][CK]%s" %(CK))
 print(Fore.RED+"|>"+Fore.GREEN+"[f4][IK]%s" %(IK))
 print(Fore.RED+"|>"+Fore.GREEN+"[f5][AK]%s" %(AK))
 print(Fore.RED+"------------------------------------------------------------")
@@ -109,9 +109,10 @@ print(Fore.CYAN+"|>UE---RAN---AMF---SEAF---AUSF---UDM---ARPF")
 print(Fore.CYAN+"|>"+Fore.GREEN+"[AV]%s" %(AV))
 print(Fore.CYAN+"|>"+Fore.GREEN+"[SUPI]%s" %(SUPI))
 print(Fore.CYAN+"------------------------------------------------------------")
-print(Fore.CYAN+"  Deliver [AV]%s,\n  [SUPI]%s\n  to AUSF" %(AV, SUPI))
+print(Fore.CYAN+"  Deliver\n"+Fore.GREEN+"  [AV]%s\n  [SUPI]%s" %(AV, SUPI))
+print(Fore.CYAN+"  to AUSF")
 c.send(AV.encode('UTF-8')) #AV
-time.sleep(2)
+time.sleep(1)
 c.send(SUPI.encode('UTF-8')) #SUPI
 time.sleep(1)
 #AKMA Ref:https://www.etsi.org/deliver/etsi_ts/133500_133599/133535/16.00.00_60/ts_133535v160000p.pdf

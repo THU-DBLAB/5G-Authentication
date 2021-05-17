@@ -81,3 +81,58 @@ def f5(Key, RAND):
 #print(f5("1000000000000001", "0123456701234567"))
 
 #Algorithm f5*
+
+#Primes in Range
+def primesInRange(x, y):
+    import random
+    prime_list = []
+    for n in range(x, y):
+        isPrime = True
+        for num in range(2, n):
+            if n % num == 0:
+                isPrime = False   
+        if isPrime:
+            prime_list.append(n)
+    return prime_list
+#and Choose one
+def primesone(x, y):
+    import random
+    prime_list = primesInRange(x, y)
+    return random.choice(prime_list)
+
+#Primitive Roots
+def gcd(a,b):
+    r=a%b
+    while(r!=0):
+        a=b
+        b=r
+        r=a%b
+    return b
+def euler(a):
+    count=0
+    for i in range(1,a):
+        if gcd(a,i)==1:
+            count+=1
+    return count
+def order(a,n,b):
+    p=1
+    while(p<=n and (b**p%a!=1)):
+          p+=1
+    if p<=n:
+          return p
+    else:
+          return -1
+def primitive_root(a):
+    n=euler(a)
+    prim=[]
+    for b in range(2,a):
+        if order(a,n,b)==n:
+            prim.append(b)
+    return prim
+#print(primitive_root(11))
+#and Choose one
+def primitiveone(a):
+    import random
+    primitive_list = primitive_root(a)
+    return random.choice(primitive_list)
+#print(primitiveone(11))

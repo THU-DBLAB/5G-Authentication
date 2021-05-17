@@ -36,6 +36,15 @@ $ shutdown -f now
 ```
 ---
 
+### 下載教材
+
+```bash
+$ cd ~/mininet/custom
+$ sudo git clone https://github.com/THU-DBLAB/5G-Authentication.git
+```
+
+---
+
 ### Socket with python
 
 ##### 開第一個 Terminal 使用 Ryu 控制

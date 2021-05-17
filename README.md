@@ -36,3 +36,18 @@ $ shutdown -f now
 ```
 ---
 
+### Socket with python
+
+```bash
+# 在 ~/mininet/custom/5gAuth 寫入 Client.py
+import socket
+host = “10.1.0.2"
+port = 1
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((host, port))
+while True:
+    cmd = raw_input("Please input msg:")
+    s.send(cmd)
+    data = s.recv(1024)
+    print(“server send: %s" % (data))
+```

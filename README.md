@@ -68,7 +68,7 @@ $ xterm UE RAN
 
 ```bash
 import socket
-host = “10.1.0.2"
+host = "10.1.0.2"
 port = 1
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))

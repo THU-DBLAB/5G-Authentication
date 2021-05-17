@@ -14,7 +14,7 @@ RAM:  8192 MB
 ##### Win:  Win10
 App:  Virtual Box 6.1.16 r140961
 Virtual Box:
-RAM:  16384 MB
+RAM:  8192 MB
 虛擬硬碟大小:  20.0 GB
 
 ---

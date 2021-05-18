@@ -97,11 +97,11 @@ s.bind((bind_ip, bind_port))
 s.listen(5)
 while True:
     c, addr = s.accept()
-    print(“Connected by: ”, addr)
+    print("Connected by: ", addr)
     while True:
         data = c.recv(1024)
-        print(“Client recv data: %s" % (data))
-        client.send(“ACK!")
+        print("Client recv data: %s" % (data))
+        c.send("ACK!")
 ```
 
 ##### in xterm (RAN) > 

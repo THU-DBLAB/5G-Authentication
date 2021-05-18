@@ -56,7 +56,7 @@ $ ryu-manager ryu.app.simple_switch_13
 ##### 開第二個 Terminal 使用 Mininet 拓樸
 
 ```bash
-$ cd ~/mininet/custom/5gAuth
+$ cd ~/mininet/custom/5G-Authentication/5G-Auth
 $ sudo mn --custom 5gtopo.py --topo mytopo --controller=remote,ip=127.0.0.1,port=6633 --switch ovs,protocols=OpenFlow13
 
 # mininet > 

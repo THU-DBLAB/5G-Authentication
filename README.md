@@ -45,6 +45,13 @@ $ git clone https://github.com/THU-DBLAB/5G-Authentication.git
 
 ---
 
+### install Visual Studio Code
+
+下載網頁（選.deb），並置Ubuntu > Downloads > 安裝 code_1.56.2-1620838498_amd64.deb
+https://code.visualstudio.com/
+
+---
+
 ### Socket with python
 
 ##### 開第一個 Terminal 使用 Ryu 控制

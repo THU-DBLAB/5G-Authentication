@@ -80,10 +80,10 @@ port = 1
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host, port))
 while True:
-    cmd = raw_input("Please input msg:")
-    s.send(cmd)
+    cmd = input("Please input msg: ")
+    s.send(cmd.encode('UTF-8'))
     data = s.recv(1024)
-    print(“server send: %s" % (data))
+    print("server send: %s" % (data.decode('UTF-8')))
 ```
 
 ##### 在 ~/mininet/custom/5gAuth 寫入 Server.py
@@ -100,8 +100,8 @@ while True:
     print("Connected by: ", addr)
     while True:
         data = c.recv(1024)
-        print("Client recv data: %s" % (data))
-        c.send("ACK!")
+        print("Client recv data: %s" % (data.decode('UTF-8')))
+        c.send("ACK!".encode('UTF-8'))
 ```
 
 ##### in xterm (RAN) > 
